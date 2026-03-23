@@ -1,0 +1,109 @@
+# ============================================================
+# F&W Training Sign-off: R Development
+# Template: copy and rename to [staff_name]_r_development_[year].yaml
+# Reference: Staff Training Framework v1.0, Appendix A.9
+# ============================================================
+
+staff_name: ~
+role: ~
+track: r_development
+year: ~
+
+items:
+
+  # --- R governance ---
+
+  - id: rdev_01
+    description: Has read the R Tool Governance document in full
+    section: R governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: rdev_02
+    description: Can classify an R tool into Tier 1, 2, or 3 and list what each requires
+    section: R governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: rdev_03
+    description: Understands the pull request and code review process
+    section: R governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: rdev_04
+    description: Has set up renv and confirmed renv::restore() works on the main repository
+    section: R governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: rdev_05
+    description: Understands the prohibition on dplyr/tidyverse in team tools and can identify the data.table equivalents
+    section: R governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- reach.* packages and data patterns ---
+
+  - id: rdev_06
+    description: Can describe the six reach.* modules and what each is for
+    section: reach packages and data patterns
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: rdev_07
+    description: Can perform common data.table operations including filtering, grouping, and joins
+    section: reach packages and data patterns
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: rdev_08
+    description: Can read and write Parquet files and understands Hive partitioning
+    section: reach packages and data patterns
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: rdev_09
+    description: Understands the Bronze store structure and what the partitioning keys mean
+    section: reach packages and data patterns
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- Tier 1 standards (required for Tier 1 custodianship only) ---
+
+  - id: rdev_t1_01
+    description: Has written testthat tests meeting 70% line coverage
+    section: Tier 1 standards
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: rdev_t1_02
+    description: Can produce a handover note covering all required fields
+    section: Tier 1 standards
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: rdev_t1_03
+    description: Has reviewed and understands the disaster recovery runbook template
+    section: Tier 1 standards
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: rdev_t1_04
+    description: Has received senior reviewer confirmation of Tier 1 competence
+    section: Tier 1 standards
+    completed: ~
+    verified_by: ~
+    notes: ~

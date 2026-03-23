@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F&W Training Dashboard</title>
+<style>
+  :root {
+    --dark-blue: #1F3864;
+    --mid-blue: #2E75B6;
+    --light-blue: #D5E8F0;
+    --good: #548235;
+    --warn: #BF9000;
+    --bad: #C00000;
+    --bg: #f8f9fa;
+    --card-bg: #fff;
+    --border: #dee2e6;
+    --text: #1F3864;
+    --text-light: #6c757d;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Navbar */
+  .navbar {
+    background: var(--dark-blue);
+    color: white;
+    padding: 12px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  .navbar h1 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .navbar .subtitle {
+    font-size: 11px;
+    opacity: .7;
+    margin-top: 2px;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    background: white;
+    border-bottom: 2px solid var(--border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-light);
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all .2s;
+    flex-shrink: 0;
+  }
+  .tab.active {
+    color: var(--mid-blue);
+    border-bottom-color: var(--mid-blue);
+  }
+  .tab:hover { color: var(--dark-blue); }
+  .tab-icon { margin-right: 5px; }
+
+  /* Content */
+  .content { padding: 16px; max-width: 1200px; margin: 0 auto; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Value boxes */
+  .value-boxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  @media (min-width: 600px) {
+    .value-boxes { grid-template-columns: repeat(4, 1fr); }
+  }
+  .vbox {
+    background: white;
+    border-radius: 8px;
+    padding: 14px;
+    border-left: 4px solid var(--mid-blue);
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  .vbox.green  { border-left-color: var(--good); }
+  .vbox.amber  { border-left-color: var(--warn); }
+  .vbox.blue   { border-left-color: var(--mid-blue); }
+  .vbox-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark-blue);
+    line-height: 1.1;
+  }
+  .vbox-label {
+    font-size: 11px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-top: 4px;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--dark-blue);
+    border-bottom: 2px solid var(--mid-blue);
+    background: #fafbfc;
+  }
+  .card-body { padding: 0; }
+  .card-body.padded { padding: 16px; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th {
+    background: var(--light-blue);
+    color: var(--dark-blue);
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    position: sticky;
+    top: 0;
+    white-space: nowrap;
+  }
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+  tr:hover td { background: #f5f8ff; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+  }
+  .badge-good { background: var(--good); }
+  .badge-warn { background: var(--warn); }
+  .badge-bad  { background: var(--bad); }
+
+  /* Progress bar */
+  .pbar-wrap {
+    background: #eee;
+    border-radius: 4px;
+    height: 8px;
+    width: 100%;
+    min-width: 60px;
+  }
+  .pbar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width .4s ease;
+  }
+  .pbar.good { background: var(--good); }
+  .pbar.warn { background: var(--warn); }
+  .pbar.bad  { background: var(--bad); }
+
+  /* Bar chart (CSS only) */
+  .bar-chart { padding: 16px; }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .bar-label {
+    width: 160px;
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: right;
+    padding-right: 12px;
+  }
+  @media (max-width: 500px) {
+    .bar-label { width: 100px; font-size: 11px; }
+  }
+  .bar-track {
+    flex: 1;
+    background: #eee;
+    border-radius: 4px;
+    height: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    transition: width .5s ease;
+    min-width: 36px;
+  }
+
+  /* Tier 1 alert */
+  .alert {
+    padding: 14px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .alert-success { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+  .alert-warning { background: #fff8e1; color: #f57f17; border: 1px solid #ffecb3; }
+
+  /* Detail status dots */
+  .dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .dot-good { background: var(--good); }
+  .dot-warn { background: var(--warn); }
+  .dot-bad  { background: var(--bad); }
+
+  /* Onboard form */
+  .form-group { margin-bottom: 14px; }
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark-blue);
+    margin-bottom: 4px;
+  }
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .checkbox-grid label {
+    font-weight: 400;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    background: var(--mid-blue);
+    width: 100%;
+    text-align: center;
+    transition: background .2s;
+  }
+  .btn:hover { background: var(--dark-blue); }
+
+  .onboard-result {
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+    border-radius: 6px;
+    padding: 16px;
+    font-size: 13px;
+    color: #2e7d32;
+  }
+  .onboard-result code {
+    background: #c8e6c9;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+
+  .muted { color: var(--text-light); font-size: 12px; }
+  .fw-bold { font-weight: 700; }
+  .mt-8 { margin-top: 8px; }
+  .mb-12 { margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <h1>F&W Training Dashboard</h1>
+  <div class="subtitle">Forecasting and Warning — Staff Training Framework v1.0</div>
+</div>
+
+<div class="tabs" id="tabs">
+  <div class="tab active" data-tab="overview"><span class="tab-icon">📊</span>Overview</div>
+  <div class="tab" data-tab="gaps"><span class="tab-icon">⚠️</span>Gaps</div>
+  <div class="tab" data-tab="tier1"><span class="tab-icon">🛡️</span>Tier 1</div>
+  <div class="tab" data-tab="detail"><span class="tab-icon">👤</span>Detail</div>
+  <div class="tab" data-tab="onboard"><span class="tab-icon">➕</span>Onboard</div>
+</div>
+
+<div class="content">
+
+  <!-- ==================== OVERVIEW ==================== -->
+  <div class="tab-content active" id="overview">
+
+    <div class="value-boxes">
+      <div class="vbox blue">
+        <div class="vbox-value">3</div>
+        <div class="vbox-label">Staff</div>
+      </div>
+      <div class="vbox green">
+        <div class="vbox-value">73.6%</div>
+        <div class="vbox-label">Completion</div>
+      </div>
+      <div class="vbox amber">
+        <div class="vbox-value">14</div>
+        <div class="vbox-label">Outstanding</div>
+      </div>
+      <div class="vbox blue">
+        <div class="vbox-value">4</div>
+        <div class="vbox-label">Tracks on file</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Completion by staff and track</div>
+      <div class="card-body">
+        <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Staff</th><th>Track</th><th>Done</th><th>Total</th><th>Progress</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-bold">A. Jones</td><td>Core</td><td>9</td><td>9</td>
+              <td><div class="pbar-wrap"><div class="pbar good" style="width:100%"></div></div></td>
+              <td><span class="badge badge-good">Complete</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold">A. Jones</td><td>R Development</td><td>13</td><td>13</td>
+              <td><div class="pbar-wrap"><div class="pbar good" style="width:100%"></div></div></td>
+              <td><span class="badge badge-good">Complete</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold">J. Smith</td><td>Core</td><td>6</td><td>9</td>
+              <td><div class="pbar-wrap"><div class="pbar warn" style="width:66.7%"></div></div></td>
+              <td><span class="badge badge-warn">In progress</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold">J. Smith</td><td>Hydrology Fund.</td><td>4</td><td>6</td>
+              <td><div class="pbar-wrap"><div class="pbar warn" style="width:66.7%"></div></div></td>
+              <td><span class="badge badge-warn">In progress</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold">P. Kumar</td><td>Cross-cutting</td><td>8</td><td>16</td>
+              <td><div class="pbar-wrap"><div class="pbar bad" style="width:50%"></div></div></td>
+              <td><span class="badge badge-bad">Behind</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold">P. Kumar</td><td>Python &amp; ML</td><td>6</td><td>13</td>
+              <td><div class="pbar-wrap"><div class="pbar bad" style="width:46.2%"></div></div></td>
+              <td><span class="badge badge-bad">Behind</span></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Completion by track</div>
+      <div class="card-body">
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-label">Core</div>
+            <div class="bar-track"><div class="bar-fill" style="width:83.3%;background:var(--good)">83%</div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">R Development</div>
+            <div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--good)">100%</div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Hydrology Fund.</div>
+            <div class="bar-track"><div class="bar-fill" style="width:66.7%;background:var(--warn)">67%</div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Cross-cutting</div>
+            <div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--bad)">50%</div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Python &amp; ML</div>
+            <div class="bar-track"><div class="bar-fill" style="width:46.2%;background:var(--bad)">46%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== GAPS ==================== -->
+  <div class="tab-content" id="gaps">
+    <div class="card">
+      <div class="card-header">Incomplete training items (14)</div>
+      <div class="card-body">
+        <div class="table-scroll">
+        <table>
+          <thead><tr><th>Staff</th><th>Track</th><th>Section</th><th>ID</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td class="fw-bold">J. Smith</td><td>Core</td><td>Governance framework</td><td>core_03</td><td>Can explain Tier 1, Tier 2, and Tier 3 classification and give an example of each</td></tr>
+            <tr><td class="fw-bold">J. Smith</td><td>Core</td><td>Governance framework</td><td>core_04</td><td>Understands the Tool Register and Model Register purpose and update triggers</td></tr>
+            <tr><td class="fw-bold">J. Smith</td><td>Core</td><td>Data architecture</td><td>core_07</td><td>Can explain Q-FAIR and what each principle means in the team context</td></tr>
+            <tr><td class="fw-bold">J. Smith</td><td>Hydrology Fund.</td><td>Data and metrics</td><td>hydro_05</td><td>Can explain NSE, KGE, and FAR and what good values look like</td></tr>
+            <tr><td class="fw-bold">J. Smith</td><td>Hydrology Fund.</td><td>Data and metrics</td><td>hydro_06</td><td>Can name the main catchment descriptors used in model config and ML</td></tr>
+            <tr><td class="fw-bold">P. Kumar</td><td>Cross-cutting</td><td>Model condition</td><td>xcut_07</td><td>Can describe what condition assessment covers and how the 0-10 score works</td></tr>
+            <tr><td class="fw-bold">P. Kumar</td><td>Cross-cutting</td><td>Model condition</td><td>xcut_08</td><td>Understands review schedules and what triggers an unscheduled review</td></tr>
+            <tr><td class="fw-bold">P. Kumar</td><td>Cross-cutting</td><td>Model condition</td><td>xcut_09</td><td>Can explain how poor condition propagates through connected models</td></tr>
+            <tr><td class="fw-bold">P. Kumar</td><td>Cross-cutting</td><td>Model condition</td><td>xcut_10</td><td>Understands what the Connection Register records</td></tr>
+            <tr><td class="fw-bold">P. Kumar</td><td>Cross-cutting</td><td>Black box models</td><td>xcut_13</td><td>Can explain why black box models carry specific governance risks</td></tr>
+            <tr><td class="fw-bold">P. Kumar</td><td>Cross-cutting</td><td>Black box models</td><td>xcut_14</td><td>Understands why all operational black box models are Tier 1 assets</td></tr>
+            <tr><td class="fw-bold">P. Kumar</td><td>Cross-cutting</td><td>Black box models</td><td>xcut_15</td><td>Knows what a training dataset record must contain</td></tr>
+            <tr><td class="fw-bold">P. Kumar</td><td>Cross-cutting</td><td>Black box models</td><td>xcut_16</td><td>Can describe what must be recorded when a black box model is replaced</td></tr>
+            <tr><td class="fw-bold">P. Kumar</td><td>Python &amp; ML</td><td>LSTM pipelines</td><td>pyml_10</td><td>Can describe what the feature engineering pipeline does</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TIER 1 CHECK ==================== -->
+  <div class="tab-content" id="tier1">
+    <div class="card">
+      <div class="card-header">Tier 1 readiness check</div>
+      <div class="card-body padded">
+
+        <p class="muted mb-12">Checking custodians: <strong>A. Jones</strong>, <strong>J. Smith</strong>, <strong>B. Taylor</strong></p>
+
+        <div class="alert alert-warning">
+          ⚠️ 2 custodian(s) with issues.
+        </div>
+
+        <div class="table-scroll">
+        <table>
+          <thead><tr><th>Custodian</th><th>Track</th><th>Gaps</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="fw-bold">A. Jones</td><td>Core</td><td>0</td>
+              <td><span class="badge badge-good">Ready</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold">A. Jones</td><td>R Development</td><td>0</td>
+              <td><span class="badge badge-good">Ready</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold">J. Smith</td><td>Core</td><td>3</td>
+              <td><span class="badge badge-warn">3 gaps</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold">J. Smith</td><td>Hydrology Fund.</td><td>2</td>
+              <td><span class="badge badge-warn">2 gaps</span></td>
+            </tr>
+            <tr>
+              <td class="fw-bold">B. Taylor</td><td colspan="2" style="color:var(--bad)">NO FILES FOUND</td>
+              <td><span class="badge badge-bad">Missing</span></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== STAFF DETAIL ==================== -->
+  <div class="tab-content" id="detail">
+    <div class="card">
+      <div class="card-header">J. Smith — Core</div>
+      <div class="card-body">
+        <div class="table-scroll">
+        <table>
+          <thead><tr><th>ID</th><th>Section</th><th>Description</th><th>Completed</th><th>Verified by</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>core_01</td><td>Governance</td>
+              <td>Read the Data &amp; Digital Asset Governance Framework v1.3</td>
+              <td>2026-02-10</td><td>J. Coles</td>
+              <td><span class="dot dot-good"></span>Verified</td>
+            </tr>
+            <tr>
+              <td>core_02</td><td>Governance</td>
+              <td>Can describe Owner, Steward, and Custodian roles</td>
+              <td>2026-02-12</td><td>J. Coles</td>
+              <td><span class="dot dot-good"></span>Verified</td>
+            </tr>
+            <tr>
+              <td>core_03</td><td>Governance</td>
+              <td>Can explain Tier 1/2/3 classification with examples</td>
+              <td></td><td></td>
+              <td><span class="dot dot-bad"></span>Outstanding</td>
+            </tr>
+            <tr>
+              <td>core_04</td><td>Governance</td>
+              <td>Understands Tool Register and Model Register</td>
+              <td></td><td></td>
+              <td><span class="dot dot-bad"></span>Outstanding</td>
+            </tr>
+            <tr>
+              <td>core_05</td><td>Data architecture</td>
+              <td>Can describe Bronze, Silver, and Gold tiers</td>
+              <td>2026-02-14</td><td>J. Coles</td>
+              <td><span class="dot dot-good"></span>Verified</td>
+            </tr>
+            <tr>
+              <td>core_06</td><td>Data architecture</td>
+              <td>Understands Gold-only rule for Tier 1 runs</td>
+              <td>2026-02-14</td><td>J. Coles</td>
+              <td><span class="dot dot-good"></span>Verified</td>
+            </tr>
+            <tr>
+              <td>core_07</td><td>Data architecture</td>
+              <td>Can explain Q-FAIR in team context</td>
+              <td></td><td></td>
+              <td><span class="dot dot-bad"></span>Outstanding</td>
+            </tr>
+            <tr>
+              <td>core_08</td><td>Version control</td>
+              <td>Understands version control for reproducibility</td>
+              <td>2026-02-10</td><td>J. Coles</td>
+              <td><span class="dot dot-good"></span>Verified</td>
+            </tr>
+            <tr>
+              <td>core_09</td><td>Version control</td>
+              <td>Knows where assets must be stored</td>
+              <td>2026-02-10</td><td>J. Coles</td>
+              <td><span class="dot dot-good"></span>Verified</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ONBOARD ==================== -->
+  <div class="tab-content" id="onboard">
+    <div class="card">
+      <div class="card-header">Create sign-off files for a new starter</div>
+      <div class="card-body padded">
+        <div class="form-group">
+          <label>Full name</label>
+          <input type="text" value="C. Williams" readonly>
+        </div>
+        <div class="form-group">
+          <label>Role</label>
+          <input type="text" value="Graduate Hydrologist" readonly>
+        </div>
+        <div class="form-group">
+          <label>Year</label>
+          <input type="text" value="2026" readonly>
+        </div>
+        <div class="form-group">
+          <label>Tracks</label>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" checked disabled> Core</label>
+            <label><input type="checkbox" checked disabled> Hydrology Fund.</label>
+            <label><input type="checkbox" disabled> Hydraulics Fund.</label>
+            <label><input type="checkbox" checked disabled> Data &amp; Coding Fund.</label>
+            <label><input type="checkbox" checked disabled> Cross-cutting</label>
+            <label><input type="checkbox" checked disabled> Hydrological Mod.</label>
+            <label><input type="checkbox" disabled> Hydraulic Mod.</label>
+            <label><input type="checkbox" disabled> FMP Crossover</label>
+            <label><input type="checkbox" disabled> R Development</label>
+            <label><input type="checkbox" disabled> Python &amp; ML</label>
+          </div>
+        </div>
+        <button class="btn" onclick="document.getElementById('onboard-result').style.display='block'">Create files</button>
+
+        <div id="onboard-result" class="onboard-result mt-8" style="display:none;">
+          <strong>Created 5 files for C. Williams:</strong>
+          <ul style="margin:8px 0 0 18px; padding:0;">
+            <li><code>c_williams_core_2026.yaml</code></li>
+            <li><code>c_williams_hydrology_fundamentals_2026.yaml</code></li>
+            <li><code>c_williams_data_coding_fundamentals_2026.yaml</code></li>
+            <li><code>c_williams_cross_cutting_2026.yaml</code></li>
+            <li><code>c_williams_hydrological_modelling_2026.yaml</code></li>
+          </ul>
+          <p style="margin-top:8px;margin-bottom:0;">Click <strong>Reload files</strong> on the Overview tab to see them.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

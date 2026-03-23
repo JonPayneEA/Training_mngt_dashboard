@@ -1,0 +1,109 @@
+# ============================================================
+# F&W Training Sign-off: Python and ML
+# Template: copy and rename to [staff_name]_python_ml_[year].yaml
+# Reference: Staff Training Framework v1.0, Appendix A.10
+# ============================================================
+
+staff_name: ~
+role: ~
+track: python_ml
+year: ~
+
+items:
+
+  # --- Python governance ---
+
+  - id: pyml_01
+    description: Has read the Python Tool Governance document in full
+    section: Python governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: pyml_02
+    description: Has set up a poetry project and confirmed the lockfile is committed
+    section: Python governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: pyml_03
+    description: Understands the prohibition on pip install in managed projects
+    section: Python governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: pyml_04
+    description: Can classify a Python tool and describe what each tier requires
+    section: Python governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: pyml_05
+    description: Understands the training and inference separation requirement
+    section: Python governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- AI/ML environment ---
+
+  - id: pyml_06
+    description: Can describe what Unity Catalog and MLflow do in the DASH environment
+    section: AI ML environment
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: pyml_07
+    description: Knows what must be logged to MLflow for every experiment run
+    section: AI ML environment
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: pyml_08
+    description: Understands the staged build approach and which data tier applies at each stage
+    section: AI ML environment
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: pyml_09
+    description: Knows the Gold data requirement for Tier 1 inference pipelines
+    section: AI ML environment
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- LSTM pipelines ---
+
+  - id: pyml_10
+    description: Can describe what the feature engineering pipeline does and what its outputs represent
+    section: LSTM pipelines
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: pyml_11
+    description: Knows which catchment attributes are used and how they are attached to training data
+    section: LSTM pipelines
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: pyml_12
+    description: Understands what ONNX export is and why it is required
+    section: LSTM pipelines
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: pyml_13
+    description: Understands the model handover process when an LSTM replaces a black box model
+    section: LSTM pipelines
+    completed: ~
+    verified_by: ~
+    notes: ~

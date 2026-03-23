@@ -1,0 +1,130 @@
+# ============================================================
+# F&W Training Sign-off: Cross-cutting (model config and black box)
+# Template: copy and rename to [staff_name]_cross_cutting_[year].yaml
+# Reference: Staff Training Framework v1.0, Appendix A.5
+# ============================================================
+
+staff_name: ~
+role: ~
+track: cross_cutting
+year: ~
+
+items:
+
+  # --- Model register and configuration ---
+
+  - id: xcut_01
+    description: Can construct a model ID following the [CatchmentID]_[ModelType]_[Version] convention
+    section: Model register and configuration
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_02
+    description: Knows when a model must be entered in the register
+    section: Model register and configuration
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_03
+    description: Can complete a run record covering all required fields
+    section: Model register and configuration
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_04
+    description: Understands what boundary conditions are and what governance applies to each type
+    section: Model register and configuration
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_05
+    description: Can describe what a calibration record must contain
+    section: Model register and configuration
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_06
+    description: Understands the impact assessment requirement before deploying a model change
+    section: Model register and configuration
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- Model condition and connections ---
+
+  - id: xcut_07
+    description: Can describe what condition assessment covers and how the 0-10 score maps to operational risk
+    section: Model condition and connections
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_08
+    description: Understands review schedules and what triggers an unscheduled review
+    section: Model condition and connections
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_09
+    description: Can explain how poor condition propagates through connected models
+    section: Model condition and connections
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_10
+    description: Understands what the Connection Register records and when it must be updated
+    section: Model condition and connections
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_11
+    description: Can describe what a system diagram must show
+    section: Model condition and connections
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_12
+    description: Understands what manual override points are and what must be recorded when used
+    section: Model condition and connections
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- Black box models ---
+
+  - id: xcut_13
+    description: Can explain why black box models carry specific governance risks compared to physically-based models
+    section: Black box models
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_14
+    description: Understands why all operational black box models are Tier 1 assets
+    section: Black box models
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_15
+    description: Knows what a training dataset record must contain
+    section: Black box models
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: xcut_16
+    description: Can describe what must be recorded when a black box model is replaced
+    section: Black box models
+    completed: ~
+    verified_by: ~
+    notes: ~

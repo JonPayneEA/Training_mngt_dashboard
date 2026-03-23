@@ -1,0 +1,58 @@
+# ============================================================
+# F&W Training Sign-off: Hydrology Fundamentals
+# Template: copy and rename to [staff_name]_hydrology_fundamentals_[year].yaml
+# Reference: Staff Training Framework v1.0, Appendix A.2
+# ============================================================
+
+staff_name: ~
+role: ~
+track: hydrology_fundamentals
+year: ~
+
+items:
+
+  # --- Concepts ---
+
+  - id: hydro_01
+    description: Can describe the water cycle and catchment response to rainfall
+    section: Concepts
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydro_02
+    description: Can read and interpret a hydrograph
+    section: Concepts
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydro_03
+    description: Understands flow routing in a catchment and channel network
+    section: Concepts
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- Data and metrics ---
+
+  - id: hydro_04
+    description: Understands what hydrometric data is and what affects its quality
+    section: Data and metrics
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydro_05
+    description: Can explain NSE, KGE, and FAR and what good values look like
+    section: Data and metrics
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydro_06
+    description: Can name the main catchment descriptors used in model configuration and ML feature engineering
+    section: Data and metrics
+    completed: ~
+    verified_by: ~
+    notes: ~

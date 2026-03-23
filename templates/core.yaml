@@ -1,0 +1,81 @@
+# ============================================================
+# F&W Training Sign-off: Core (all staff)
+# Template: copy this file and rename to [staff_name]_core_[year].yaml
+# Reference: Staff Training Framework v1.0, Appendix A.1
+# ============================================================
+
+staff_name: ~
+role: ~
+track: core
+year: ~
+
+items:
+
+  # --- Governance framework ---
+
+  - id: core_01
+    description: Read the Data & Digital Asset Governance Framework v1.3
+    section: Governance framework
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: core_02
+    description: Can describe the Owner, Steward, and Custodian roles and grade requirements
+    section: Governance framework
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: core_03
+    description: Can explain the Tier 1, Tier 2, and Tier 3 classification and give an example of each
+    section: Governance framework
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: core_04
+    description: Understands the Tool Register and Model Register purpose and update triggers
+    section: Governance framework
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- Data architecture ---
+
+  - id: core_05
+    description: Can describe Bronze, Silver, and Gold tiers and what each represents
+    section: Data architecture
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: core_06
+    description: Understands why only Gold data may be used in Tier 1 operational runs
+    section: Data architecture
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: core_07
+    description: Can explain Q-FAIR and what each principle means in the team context
+    section: Data architecture
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- Version control ---
+
+  - id: core_08
+    description: Understands what version control is and why it is required for reproducibility
+    section: Version control
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: core_09
+    description: Knows where assets must be stored and that local-only storage is not permitted
+    section: Version control
+    completed: ~
+    verified_by: ~
+    notes: ~

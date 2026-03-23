@@ -1,0 +1,58 @@
+# ============================================================
+# F&W Training Sign-off: Hydraulic Modelling
+# Template: copy and rename to [staff_name]_hydraulic_modelling_[year].yaml
+# Reference: Staff Training Framework v1.0, Appendix A.7
+# ============================================================
+
+staff_name: ~
+role: ~
+track: hydraulic_modelling
+year: ~
+
+items:
+
+  # --- FMP governance ---
+
+  - id: hydmod_h_01
+    description: Knows the required folder structure and naming conventions
+    section: FMP governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydmod_h_02
+    description: Understands version control for binary model files and the both-versions-retained requirement
+    section: FMP governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydmod_h_03
+    description: Can confirm model files are stored in the agreed repository location
+    section: FMP governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- 1D, 2D, and linked configurations ---
+
+  - id: hydmod_h_04
+    description: Can describe when each scheme type is appropriate and the trade-offs involved
+    section: 1D 2D and linked configurations
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydmod_h_05
+    description: Understands GXY and DAT file formats and what they contain
+    section: 1D 2D and linked configurations
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydmod_h_06
+    description: Can interpret standard model output variables
+    section: 1D 2D and linked configurations
+    completed: ~
+    verified_by: ~
+    notes: ~

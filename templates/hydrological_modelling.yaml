@@ -1,0 +1,72 @@
+# ============================================================
+# F&W Training Sign-off: Hydrological Modelling
+# Template: copy and rename to [staff_name]_hydrological_modelling_[year].yaml
+# Reference: Staff Training Framework v1.0, Appendix A.6
+# ============================================================
+
+staff_name: ~
+role: ~
+track: hydrological_modelling
+year: ~
+
+items:
+
+  # --- PDM models ---
+
+  - id: hydmod_01
+    description: Understands PDM parameter set structure and why they are sensitive assets
+    section: PDM models
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydmod_02
+    description: Knows the naming convention and storage requirements for parameter sets
+    section: PDM models
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydmod_03
+    description: Can produce a complete calibration record
+    section: PDM models
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydmod_04
+    description: Can explain how PDM outputs become FMP boundary conditions
+    section: PDM models
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- Hydrometric data ---
+
+  - id: hydmod_05
+    description: Understands the Bronze ingestion pipeline including what it captures, partitioning, and immutability
+    section: Hydrometric data
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydmod_06
+    description: Can explain the Silver QC process and what supplier flags and quality codes mean
+    section: Hydrometric data
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydmod_07
+    description: Understands Gold approval requirements and who may approve Gold data
+    section: Hydrometric data
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydmod_08
+    description: Knows which data tier is required for each operational use case
+    section: Hydrometric data
+    completed: ~
+    verified_by: ~
+    notes: ~

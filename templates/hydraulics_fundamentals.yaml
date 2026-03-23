@@ -1,0 +1,58 @@
+# ============================================================
+# F&W Training Sign-off: Hydraulics Fundamentals
+# Template: copy and rename to [staff_name]_hydraulics_fundamentals_[year].yaml
+# Reference: Staff Training Framework v1.0, Appendix A.3
+# ============================================================
+
+staff_name: ~
+role: ~
+track: hydraulics_fundamentals
+year: ~
+
+items:
+
+  # --- Concepts ---
+
+  - id: hydraul_01
+    description: Can describe the difference between subcritical and supercritical flow
+    section: Concepts
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydraul_02
+    description: Can explain when 1D, 2D, and linked schemes are appropriate
+    section: Concepts
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydraul_03
+    description: Understands how floodplain roughness affects model outputs
+    section: Concepts
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- Outputs and uncertainty ---
+
+  - id: hydraul_04
+    description: Can interpret flow, level, and velocity model outputs
+    section: Outputs and uncertainty
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydraul_05
+    description: Understands the main sources of uncertainty in hydraulic models
+    section: Outputs and uncertainty
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: hydraul_06
+    description: Can describe what boundary conditions are and the main types
+    section: Outputs and uncertainty
+    completed: ~
+    verified_by: ~
+    notes: ~

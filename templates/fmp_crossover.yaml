@@ -1,0 +1,42 @@
+# ============================================================
+# F&W Training Sign-off: FMP API Crossover Module
+# Template: copy and rename to [staff_name]_fmp_crossover_[year].yaml
+# Reference: Staff Training Framework v1.0, Appendix A.8
+# ============================================================
+
+staff_name: ~
+role: ~
+track: fmp_crossover
+year: ~
+
+items:
+
+  # --- FMP API and tool governance ---
+
+  - id: fmp_01
+    description: Understands what the Flood Modeller API exposes and how Python scripts interact with it
+    section: FMP API and tool governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: fmp_02
+    description: Can list the Tier 1 tool obligations that apply to FMP orchestration scripts
+    section: FMP API and tool governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: fmp_03
+    description: Knows how run records must be completed when a model is run via script
+    section: FMP API and tool governance
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: fmp_04
+    description: Understands the distinction between the Model Register (the model) and the Tool Register (the script)
+    section: FMP API and tool governance
+    completed: ~
+    verified_by: ~
+    notes: ~

@@ -1,0 +1,58 @@
+# ============================================================
+# F&W Training Sign-off: Data and Coding Fundamentals
+# Template: copy and rename to [staff_name]_data_coding_fundamentals_[year].yaml
+# Reference: Staff Training Framework v1.0, Appendix A.4
+# ============================================================
+
+staff_name: ~
+role: ~
+track: data_coding_fundamentals
+year: ~
+
+items:
+
+  # --- Data and tools ---
+
+  - id: dcode_01
+    description: Can describe Parquet, JSON, and binary file formats and when each is used
+    section: Data and tools
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: dcode_02
+    description: Understands what a commit, branch, and pull request are in Git
+    section: Data and tools
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: dcode_03
+    description: Can explain what a code review is and what reviewers look for
+    section: Data and tools
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  # --- Scripting and environments ---
+
+  - id: dcode_04
+    description: Can explain what a function and a package dependency are
+    section: Scripting and environments
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: dcode_05
+    description: Understands what renv and poetry do and why locked environments matter
+    section: Scripting and environments
+    completed: ~
+    verified_by: ~
+    notes: ~
+
+  - id: dcode_06
+    description: Completed at least two pull request reviews in the team repository
+    section: Scripting and environments
+    completed: ~
+    verified_by: ~
+    notes: ~
